@@ -80,7 +80,7 @@ def ntfy(topicid, temperature, state, gh_token):
     "Title": "Cambio de temperatura"
   }
 
-  if temperature < 20 and state == 0:
+  if temperature < 21 and state == 0:
     body = "Yo bitch! It is freaking cold in here "+str(temperature)
     change_state(state, gh_token)
     requests.post(
