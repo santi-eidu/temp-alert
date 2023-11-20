@@ -8,17 +8,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Install pipenv
+      run: pip install -r requirements.txt
     - name: Install dependecies
-      uses: VaultVulp/action-pipenv@v2.0.1
-      with:
-        command: sync
-    
+      run: pipenv sync
     - name: Run app
-      uses: VaultVulp/action-pipenv@v2.0.1
-      with:
-        command: run python reset.py
+      run: pipenv run python reset.py
       env:
         client_id: ${{ secrets.client_id }}
         client_secret: ${{ secrets.client_secret }}
