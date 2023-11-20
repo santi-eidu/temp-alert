@@ -12,13 +12,9 @@ jobs:
     - uses: actions/setup-python@v4
       with:
         python-version: '3.9'
-        cache: 'pip' # caching pip dependencies
-    - name: Install pipenv
-      run: |
-        python -m pip install --upgrade pipenv wheel
+    - run: pip install -r requirements.txt
     - name: Install dependecies
       run: pipenv sync
-    
     - name: Run app
       run: pipenv run python temperatura.py
       env:
